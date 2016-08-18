@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>YUN DU - PARKING SPACE SEARCH</title>
+
+       
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400,700">
+        <link rel="stylesheet" href="static/bootstrap.min.css">
+        <link rel="stylesheet" href="static/font-awesome.min.css">
+        <link rel="stylesheet" href="static/style.css">
+     
+          <script src="../static/js/signIn.js"></script>
+          <link href="../static/signup.css" rel="stylesheet">
+        
+     
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+      
+        <link rel="shortcut icon" href="static/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="static/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="static/apple-touch-icon-57-precomposed.png">
+
+    </head>
+
+    <body background="static/bc.jpg">
+<div class="container">
+            <div class="row header">
+                <div class="col-sm-4 logo">
+                    <h1><a href="index.php">YUN DU</a> <span>.</span></h1>
+                </div>
+                      <nav>
+          <ul class="nav nav-pills pull-right">
+           {% if(g.authedUser!=None) %}
+               <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="/list">List</a></li>
+            <li role="presentation" class="active"><a href="/new">post</a></li>
+ 	        <li role="presentation" ><a href="/auth/logout">Logout</a></li>
+          </ul>
+        </nav>
+ 	          {% else %}
+ 	            <p>
+                Hello, guest
+            </p>
+            <p>
+                <a href="/login" class="btn btn-success">Sign In</a>
+                or
+                <a href="/register" class="btn btn-primary">Sign Up</a>
+            </p>
+
+        {% endif %}
+          </ul>
+        </nav>
+                
+                
+                <div class="col-sm-8 call-us">
+                    <p>Name: <span>{{ g.authedUser.name }}</span> | account: <span>{{ g.authedUser.email }}</span></p>
+                </div>
+            </div>
+        </div>
+ 
+<div>
+
+ <form action="" method="POST" class="form-horizontal col col-sm-6 col-sm-offset-3 text-center"> 
+        <div class="form-group"> 
+          
+              <p1>  </p1>
+            
+            <input type="text" class="form-control" placeholder="code" name="code" value="{{
+			  request.form.code }}"> 
+			 
+       
+            <button type="submit" name="submit" class="btn btn-primary" value="submit">
+                Submit
+            </button>
+            
+        </div>
+       
+    </form>
+    </div>
+    
+  
+<ul class="cd-gallery">
+		    {% for item in list %}
+           
+         <form action="" method="post"  class="form-horizontal col col-sm-4 col-sm-offset-4 text-center">
+			
+			 <div class="form-group"> 
+            <label class="control-label col col-xs-6">
+                Id:
+            </label>
+            <div class="col col-xs-10">
+                <input type="text" name="id" class="form-control"  value="{{
+			item[0] }}" />
+            </div>
+        </div> <div class="form-group"> 
+            <label class="control-label col col-xs-6">
+                Name:
+            </label>
+            <div class="col col-xs-10">
+                <input type="text" name="title" class="form-control"  value="{{
+			  g.authedUser.name }}" />
+            </div>
+        </div>
+        	 <div class="form-group"> 
+            <label class="control-label col col-xs-6">
+               ownerplate:
+            </label>
+            <div class="col col-xs-10">
+                <input type="text" name="content" class="form-control"  value="{{
+			 g.authedUser.carplate}}"  />
+            </div>
+        </div>
+            <div class="form-group"> 
+           <label class="control-label col col-xs-6">
+              polepassword:
+            </label>
+            <div class="col col-xs-10">
+                <input type="text" name="polepassword" class="form-control" value="{{
+			  item[6] }}" />
+            </div>
+        </div>
+         <div class="form-group"> 
+           <label class="control-label col col-xs-6">
+               Location:
+            </label>
+            <div class="col col-xs-10">
+                <input type="text" name="location" class="form-control"  />
+            </div>
+        </div>
+        <div class="form-group"> 
+           <label class="control-label col col-xs-6">
+               Lat:
+            </label>
+            <div class="col col-xs-10">
+                <input type="text" name="lat" class="form-control"  />
+            </div>
+        </div>
+        <div class="form-group"> 
+           <label class="control-label col col-xs-6">
+               lon:
+            </label>
+            <div class="col col-xs-10">
+                <input type="text" name="lon" class="form-control"  />
+            </div>
+        </div>
+        <div class="form-group"> 
+           <label class="control-label col col-xs-6">
+               PoleState:
+            </label>
+            <div class="col col-xs-10">
+                <input type="text" name="polestate" class="form-control"  />
+            </div>
+        </div>
+        
+        
+        <div class="form-group"> 
+         <label class="control-label col col-xs-6">
+               Allowingperiod:
+            </label>
+            <div class="col col-xs-10">
+                <input type="text" name="allowingperiod" class="form-control" />
+            </div>
+        </div>
+         
+          <div class="form-group"> 
+            <label class="control-label col col-xs-6">
+              price:
+            </label>
+            <div class="col col-xs-10">
+                <input type="text" name="price" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group"> 
+            <label class="control-label col col-xs-6">
+              image:
+            </label>
+            <div class="col col-xs-10">
+                <input type="text" name="img1" class="form-control" value="{{
+			  item[10] }}"/>
+                 <input type="text" name="img2" class="form-control" value="{{
+			  item[11] }}"/>
+                  <input type="text" name="img3" class="form-control" value="{{
+			  item[12] }}"/>
+			  
+			 <button type="submit" name="submit"  class="btn btn-primary" value="bind">
+                bind with me
+            </button>
+            </div>
+        </div>
+        
+		  </form>
+            
+       
+            </li>
+            
+        {% endfor %}
+				</ul> <!-- cd-item-wrapper -->
+			</a>
+
+   
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk-2GwCjFNls84UgwzO2sULjyqhdCUp9I&callback=initMap">
+    </script>
+
+            <div class="row">
+                <div class="col-sm-12 social">
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-dribbble"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Flickr"><i class="fa fa-flickr"></i></a>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Javascript -->
+        <script src="static/jquery-1.11.1.min.js"></script>
+        <script src="static/bootstrap.min.js"></script>
+        <script src="static/jquery.backstretch.min.js"></script>
+        <script src="static/jquery.countdown.min.js"></script>
+        <script src="static/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="static/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
+</html>

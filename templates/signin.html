@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>YUN DU - PARKING SPACE SEARCH</title>
+
+       
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster">
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:400,700'>
+        <link rel="stylesheet" href="static/bootstrap.min.css">
+        <link rel="stylesheet" href="static/font-awesome.min.css">
+        <link rel="stylesheet" href="static/style.css">
+          <link href="../static/signup.css" rel="stylesheet">
+        
+     
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      
+
+      
+        <link rel="shortcut icon" href="static/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="static/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="static/apple-touch-icon-57-precomposed.png">
+
+    </head>
+
+    <body background="static/bc.jpg">
+
+        <div class="container">
+            <div class="row header">
+                <div class="col-sm-4 logo">
+                    <h1><a href="index.php">YUN DU</a> <span>.</span></h1>
+                </div>
+                      <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="/">Home</a></li>
+            <li role="presentation" class="active"><a href="/login">Sign In</a></li>
+ 	    <li role="presentation"><a href="/register">Sign Up</a></li>
+          </ul>
+        </nav>
+                
+                
+                <div class="col-sm-8 call-us">
+                    <p>Tel: <span>089 224 1097</span> | E-mail: <span>duyunihan@gmail.com</span></p>
+                </div>
+            </div>
+        </div>
+
+     <div class="container">
+      <h3 align="center">Please login:</h3>
+      <br>
+      <form action="" class="form-signin" method="post">
+        <input type="text" class="form-control" placeholder="Username" name="username" value="{{
+          request.form.username }}">
+         <input type="password" class="form-control" placeholder="Password" name="password" value="{{
+          request.form.password }}">
+        
+        <button id="btnSignIn" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+      {% if error %}
+        <p class="error" align="center"><strong>Error:</strong> {{ error }}</p>
+      {% endif %}
+	<div class="container">
+	   <br><p align="center">No account? <a href='/register'>Register here</a>.</p>
+	   <br>
+		{% for paragraph in Body_info %}
+		<p>{{ paragraph }}</p>
+		{% endfor %}
+	  </div>
+
+    </div>
+
+            <div class="row">
+                <div class="col-sm-12 social">
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-dribbble"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Flickr"><i class="fa fa-flickr"></i></a>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Javascript -->
+        <script src="static/jquery-1.11.1.min.js"></script>
+        <script src="static/bootstrap.min.js"></script>
+        <script src="static/jquery.backstretch.min.js"></script>
+        <script src="static/jquery.countdown.min.js"></script>
+        <script src="static/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="static/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
+</html>

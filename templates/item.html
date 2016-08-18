@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>YUN DU - PARKING SPACE SEARCH</title>
+
+       
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400,700">
+        <link rel="stylesheet" href="../static/bootstrap.min.css">
+        <link rel="stylesheet" href="../static/font-awesome.min.css">
+        <link rel="stylesheet" href="../static/style.css">
+     
+     
+        <link rel="stylesheet" href="../static/reset.css"> <!-- CSS reset -->
+	    <link rel="stylesheet" href="../static/style3.css"> <!-- Resource style -->
+	    <script src="../static/modernizr.js"></script> <!-- Modernizr -->
+     
+     
+     
+     
+          <script src="../static/js/signIn.js"></script>
+          <link href="../static/signup.css" rel="stylesheet">
+        
+     
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script>
+   
+      
+      
+      </script>
+
+      
+        <link rel="shortcut icon" href="static/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../static/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../static/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../tatic/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="../static/apple-touch-icon-57-precomposed.png">
+         <title>parking space Slider</title>
+    </head>
+
+<body background="static/bc.jpg">
+		
+	
+	
+	
+	
+ <div class="container">
+            <div class="row header">
+                <div class="col-sm-4 logo">
+                    <h1><a href="index.php">YUN DU</a> <span>.</span></h1>
+                </div>
+                      <nav>
+          <ul class="nav nav-pills pull-right">
+           {% if(g.authedUser!=None) %}
+            <li role="presentation"  class="active"><a href="/list">List</a></li>
+            <li role="presentation"><a href="/add">Add my Own</a></li>
+            <li role="presentation" ><a href="/manage">manage my pole</a></li>
+ 	        <li role="presentation" ><a href="/auth/logout">Logout</a></li>
+ 	      
+			    	          {% else %}
+ 	            <p>
+                Hello, guest
+            </p>
+            <p>
+                <a href="/login" class="btn btn-success">Sign In</a>
+                or
+                <a href="/register" class="btn btn-primary">Sign Up</a>
+            </p>
+
+        {% endif %}
+          </ul>
+        </nav>
+           
+                
+                <div class="col-sm-8 call-us">
+                    <p>Name: <span>{{ g.authedUser.name }}</span> | account: <span>{{ g.authedUser.email }}</span></p>
+                </div>
+            </div>
+        </div>
+    <h3>
+       
+            <p align = "center">
+                You are logged in as {{ g.authedUser.name }}
+            </p>
+            
+         {% with %}
+            {% set style ="width:100%;height:300px;"%}
+            {{ googlemap("my_awesome_map", lat=post.lat, lng=post.lon,markers=[(post.lat,post.lon)],zoom=10,style=style)}}
+            {% endwith%}
+    </h3>
+    <form  class="form-horizontal col col-sm-6 col-sm-offset-3 text-center" > 
+ 
+		
+   </form>
+				
+
+    <form action="" method="POST" class="form-horizontal col col-sm-6 col-sm-offset-3 text-center" > 
+		
+        <div class="form-group">
+            <label class="control-label col col-xs-7">
+                ordertime:
+            </label>
+             <div class="col col-xs-20">
+                <input type="text" name="ordertime" class="form-control" placeholder="ordertime"/>
+            </div>
+        </div>
+       <div class="form-group"> 
+           <label class="control-label col col-xs-7">
+              period:
+            </label>
+            <div class="col col-xs-20">
+                <input type="text" name="period" class="form-control"  />
+            </div>
+        </div>
+        <div>
+         <label >
+                Ownername:   <p>{{ post.title }}</p>
+            </label>
+               
+           </div> </br>
+           <div>    
+				 <label>
+                Location:	<p> {{ post.location }}</p>
+            </label>
+			
+			</div></br>
+			<div>
+       <label >
+                price:      <p>${{post.price}}</p>
+            </label>
+				
+        </div>  </br>
+        
+        <div>
+			<input type="hidden" value="order" name="action">
+			
+            <button class="btn btn-success" type="submit">order</button>
+            
+            <button type="reset" class="btn btn-link">
+                Clear
+            </button>
+        </div>
+       
+    </form>
+
+<div>
+	  {% if(g.authedUser!=None) %}
+        <form method="post">
+            <input type="hidden" value="reply" name="action">
+            <div class="row">
+                <div class="col col-xs-6" style="margin-bottom: 10px;">
+                    <textarea name="reply"  cols="500" rows="4"
+                              placeholder="Type your reply here"></textarea>
+                </div>
+            </div>
+            <p align="">
+                <button class="btn btn-success" type="submit">Send</button>
+                <button class="btn btn-link" type="reset">Reset</button>
+             
+            </p>
+        </form>
+
+    {% endif %}
+    <p>Replies</p>
+
+    {% for reply in replies %}
+        <div style="padding-left: 500px;">
+            <h4 style="margin-bottom: 4px;">
+                {{ reply[2] }}
+                <small>{{ reply[1] }}</small>
+
+               
+             
+             {% if g.authedUser.user_type == None %}
+				<form method="post" style="display: inline-block">
+                       <input type="hidden" name="action" value="delete-reply:{{ reply[3] }}">
+                        <button class="btn btn-danger btn-sm">delete</button>
+                    </form>			
+			    {%  endif %}
+            </h4>
+            <p style="padding-left: 20px;white-space: pre-line;line-height: 1.2em">{{ reply[0] }}</p>
+        </div>
+        
+    {% endfor %}
+  </div> 
+
+
+		
+<script src="../static/jquery-2.1.1.js"></script>
+<script src="../static/jquery.mobile.min.js"></script>
+<script src="../static/main.js"></script> <!-- Resource jQuery -->
+      
+      
+</body>
+</html>

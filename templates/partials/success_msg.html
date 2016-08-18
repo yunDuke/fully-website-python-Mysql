@@ -1,0 +1,9 @@
+{% with succesess = get_flashed_messages(category_filter=["success"]) %}
+    {% if succesess %}
+        {%- for msg in succesess %}
+            <p class="alert alert-success">
+                {{ msg }}
+            </p>
+        {% endfor -%}
+    {% endif %}
+{% endwith %}

@@ -1,0 +1,152 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>YUN DU - PARKING SPACE SEARCH</title>
+
+       
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400,700">
+        <link rel="stylesheet" href="static/bootstrap.min.css">
+        <link rel="stylesheet" href="static/font-awesome.min.css">
+        <link rel="stylesheet" href="static/style.css">
+     
+          <script src="../static/js/signIn.js"></script>
+          <link href="../static/signup.css" rel="stylesheet">
+        
+     
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      
+
+      
+        <link rel="shortcut icon" href="static/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="static/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="static/apple-touch-icon-57-precomposed.png">
+
+    </head>
+
+    <body >
+
+        <div class="container">
+            <div class="row header">
+                <div class="col-sm-4 logo">
+                    <h1><a href="index.php">YUN DU</a> <span>.</span></h1>
+                </div>
+                            <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="/list">List</a></li>
+            <li role="presentation" class="active"><a href="/new">post</a></li>
+ 	        <li role="presentation" ><a href="/auth/logout">Logout</a></li>
+          </ul>
+        </nav>
+                
+                <div class="col-sm-8 call-us">
+                    <p>Tel: <span>089 224 1097</span> | E-mail: <span>duyunihan@gmail.com</span></p>
+                </div>
+            </div>
+        </div>
+
+<div class="container">
+            <div class="row header">
+                <div class="col-sm-4 logo">
+                    <h1><a href="index.php">YUN DU</a> <span>.</span></h1>
+                </div>
+                      <nav>
+          <ul class="nav nav-pills pull-right">
+           {% if(g.authedUser!=None) %}
+            <li role="presentation"  class="active"><a href="/list">List</a></li>
+            <li role="presentation"><a href="/add">Add my Own</a></li>
+            <li role="presentation" ><a href="/manage">manage my pole</a></li>
+ 	        <li role="presentation" ><a href="/auth/logout">Logout</a></li>
+ 	          {% else %}
+ 	            <p>
+                Hello, guest
+            </p>
+            <p>
+                <a href="/login" class="btn btn-success">Sign In</a>
+                or
+                <a href="/register" class="btn btn-primary">Sign Up</a>
+            </p>
+
+        {% endif %}
+          </ul>
+        </nav>
+                
+                
+                <div class="col-sm-8 call-us">
+                    <p>Name: <span>{{ g.authedUser.name }}</span> | account: <span>{{ g.authedUser.email }}</span></p>
+                </div>
+            </div>
+        </div>
+
+
+    <form action="" method="POST" class="form-horizontal col col-sm-6 col-sm-offset-3 text-center"> 
+        <div class="form-group"> 
+            <label class="control-label col col-xs-2">
+                title:
+            </label>
+            <div class="col col-xs-10">
+                <input type="text" name="title" class="form-control" placeholder="title"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col col-xs-2">
+                content:
+            </label>
+            <div class="col col-xs-10">
+                <textarea placeholder="content" name="content" id="" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+            <button type="reset" class="btn btn-link">
+                Clear
+            </button>
+        </div>
+       
+    </form>
+
+
+
+
+
+</div>
+
+            <div class="row">
+                <div class="col-sm-12 social">
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-dribbble"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Flickr"><i class="fa fa-flickr"></i></a>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Javascript -->
+        <script src="static/jquery-1.11.1.min.js"></script>
+        <script src="static/bootstrap.min.js"></script>
+        <script src="static/jquery.backstretch.min.js"></script>
+        <script src="static/jquery.countdown.min.js"></script>
+        <script src="static/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="static/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
+</html>
