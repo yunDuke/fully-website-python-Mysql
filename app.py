@@ -27,7 +27,7 @@ GoogleMaps(app, key="AIzaSyDk-2GwCjFNls84UgwzO2sULjyqhdCUp9I")
 
 app.secret_key = '123456'
  
-dbConnection = mysql.connector.connect(host='178.62.86.129', password="1234", user='root', database='all')
+dbConnection = mysql.connector.connect(host='Ip', password="", user='', database='')
 
 
 def get_model(table_name, attributes, sql_override=None):
